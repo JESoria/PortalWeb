@@ -1,0 +1,120 @@
+﻿@model PortalPedidos.Models.LoginModel
+
+@{
+    Layout = "~/Views/Shared/_Layout4.cshtml";
+    ViewBag.Title = "Inicio de Sesión";
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<style>
+    .progress-bar {
+        color: #333;
+    }
+
+    a {
+        text-align: right;
+    }
+
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        outline: none;
+    }
+
+    .form-control {
+        position: relative;
+        font-size: 16px;
+        height: auto;
+        padding: 10px;
+        body
+
+    {
+        background: url(https://image.shutterstock.com/image-photo/pills-spilled-out-white-bottle-260nw-1061972606.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    .login-form {
+        margin-top: 60px;
+    }
+
+    form[role=login] {
+        color: #5d5d5d;
+        background: #f2f2f2;
+        padding: 26px;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+    }
+
+        form[role=login] img {
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 35px;
+        }
+
+        form[role=login] input,
+        form[role=login] button {
+            font-size: 18px;
+            margin: 16px 0;
+        }
+
+        form[role=login] > div {
+            text-align: center;
+        }
+
+    .form-links {
+        text-align: center;
+        margin-top: 1em;
+        margin-bottom: 50px;
+    }
+
+        .form-links a {
+            color: #fff;
+        }
+    
+</style>
+
+
+
+<div class="container" style="width:75%; height:75% ;">
+    <div class="row" id="pwd-container">
+        <div class="col-md-4"></div>
+
+        <div class="col-md-4">
+            <section class="login-form">
+                @using (Html.BeginForm("Index", "Login", FormMethod.Post,
+new { enctype = "multipart/form-data", @role = "login" }))
+                {
+
+
+                    <img src="~/Context/logo.png" class="img-responsive"  />
+                    @Html.TextBoxFor(x => x.usuario, null, new { autocomplete = "off", @placeholder = "Usuario", @class = "form-control input-lg" })
+                    @Html.ValidationMessageFor(x => x.usuario, null, new { @class = "label label-danger" })
+                    <br /><br />
+                    @Html.TextBoxFor(x => x.clave, null, new { @placeholder = "Clave", @class = "form-control input-lg", @type = "password" })
+                    @Html.ValidationMessageFor(x => x.clave, null, new { @class = "label label-danger" })
+
+
+                    <div class="pwstrength_viewport_progress"></div>
+                    <hr />
+                    if (ViewBag.puff != null)
+                    {
+                        <label class="label label-danger">@ViewBag.puff</label>
+                    }
+
+                    <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Ingresar</button>
+
+
+
+                }
+            </section>
+
+        </div>
+    </div>
+</div>
+

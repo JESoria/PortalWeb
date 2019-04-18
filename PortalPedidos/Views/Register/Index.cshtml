@@ -1,0 +1,123 @@
+﻿@model PortalPedidos.Models.RegisterModel
+
+@{
+    Layout = "~/Views/Shared/_Layout5.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<h2>Agregar nuevo empleado</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <img src="~/Context/usuario.png" width="100" height="100" />
+
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.NOMBRES, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NOMBRES)
+                @Html.ValidationMessageFor(model => model.NOMBRES)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.APELLIDOS, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.APELLIDOS)
+                @Html.ValidationMessageFor(model => model.APELLIDOS)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.USUARIO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.USUARIO)
+                @Html.ValidationMessageFor(model => model.USUARIO)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CONTRASEÑA, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CONTRASEÑA)
+                @Html.ValidationMessageFor(model => model.CONTRASEÑA)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CONFIRMAR_CONTRASEÑA, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CONFIRMAR_CONTRASEÑA)
+                @Html.ValidationMessageFor(model => model.CONFIRMAR_CONTRASEÑA)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID_SUCURSAL, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ID_SUCURSAL)
+                @Html.ValidationMessageFor(model => model.ID_SUCURSAL)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CODIGO_EMPLEADO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CODIGO_EMPLEADO)
+                @Html.ValidationMessageFor(model => model.CODIGO_EMPLEADO)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DUI, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DUI)
+                @Html.ValidationMessageFor(model => model.DUI)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NIT, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NIT)
+                @Html.ValidationMessageFor(model => model.NIT)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TELEFONO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TELEFONO)
+                @Html.ValidationMessageFor(model => model.TELEFONO)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DIRECCION, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DIRECCION)
+                @Html.ValidationMessageFor(model => model.DIRECCION)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div class="pwstrength_viewport_progress"></div>
+<hr />
+@if (ViewBag.puff != null)
+{
+    <label class="label label-danger">@ViewBag.puff</label>
+}
+
+<div>
+    @Html.ActionLink("Regresar", "Index", "AdminEmp");
+</div>

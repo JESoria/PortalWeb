@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Index";
+    var d = ViewBag.x as List<PortalPedidos.Models.DETALLE_PEDIDO>;
+    var i = ViewBag.i;
+}
+<style>
+
+    #divimagen {
+        float: left;
+        width: 18%;
+    }
+
+    #divdetalle {
+        float: right;
+        width: 82%;
+    }
+    h2 {
+        text-align:center;
+    }
+</style>
+
+<div class="sidebar" id="divimagen">
+
+    <img alt="Silverfox" class="img-fluid" src="~/Context/medicamentos.jpg" height="100%">
+
+
+</div>
+
+<h2>Detalle de pedido No. @i</h2>
+
+<div class="table-responsive" id="divdetalle">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Cantidad</th>
+                <th>Producto</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (d != null)
+            {
+
+                foreach (var row in d)
+                {
+                    <tr>
+                        <td>@row.CANTIDAD</td>
+                        <td>@row.PRODUCTO</td>
+                        <td>@row.PRECIO_VENTA</td>
+                    </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+

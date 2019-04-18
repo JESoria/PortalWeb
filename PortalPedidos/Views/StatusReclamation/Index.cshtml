@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "cambiarEstadoReclamo";
+    var id = ViewBag.idP;
+}
+
+<h2 style="margin-left:20px">Cambiar Estado de Reclamo</h2>
+<br />
+<h4 style="margin-left:20px">Reclamo N0. @id</h4>
+
+
+
+<div class="row" style=" width:50%; height:50%;  margin-left:20px ">
+    <section class="form-group">
+        @using (Html.BeginForm("Reclamo", "OrderStatus", new { ID_PEDIDO = @id }, FormMethod.Post,
+new { enctype = "multipart/form-data", @role = "status" }))
+        {
+            @Html.TextBox("Observaciones", null, new { id = "Observaciones", autocomplete = "off", @placeholder = "Observaciones", @class = "form-control input-lg" })
+           <br />
+            <button type="submit" name="aceptar" value="aceptarbtn" class="btn btn-lg btn-primary btn-block" style="width:30%;">Aceptar</button>
+
+        }
+
+
+    </section>
+</div>
+
+<div class="row"  style=" width:50%; height:50%;  margin-left:20px ">
+    <section class="form-group">
+        @using (Html.BeginForm("Index", "Reclamations", FormMethod.Post,
+new { enctype = "multipart/form-data", @role = "status" }))
+        {
+            <button type="submit" name="cancelar" value="cancelarbtn" class="btn btn-lg btn-primary btn-block" style="width:30%">Cancelar</button>
+        }
+
+
+    </section>
+</div>
+
+

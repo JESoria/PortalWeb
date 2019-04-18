@@ -1,0 +1,73 @@
+﻿@model PortalPedidos.Models.AdminFarmaciaModel
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewBag.Title = "Master";
+    var emp = ViewBag.emp as List<PortalPedidos.Models.AdminFarmaciaModel>;
+}
+
+<style>
+    h2 {
+        text-align: center;
+    }
+
+    h4 {
+        text-align: center;
+    }
+
+    #divicono {
+        float: left;
+        width: 10%;
+    }
+
+    #divinfo {
+        float: right;
+        width: 90%;
+    }
+
+    #cont {
+        width: 50%
+    }
+    #cont2 {
+        float:left;
+        width: 30%
+    }
+    .login-form {
+        align-content: center;
+        margin-top: 60px;
+    }
+</style>
+
+
+<div class="container">
+    <div class="right" id="divinfo">
+        <h2>Administracion de Encargados de farmacias</h2>
+        <h4>Empleado: @Session["NombreUsuario"].ToString()</h4>
+    </div>
+    <div class="icon-bar" id="divicono" style="float:left">
+        <img src="~/Context/emps.jpg" width="100" height="100" />
+    </div>
+    <hr />
+</div>
+<br /><br />
+<hr />
+
+
+<div class="container" style="width:25%; height:50%; position:center;">
+
+    <div >
+        <section class="login-form" style="position:center">
+            <br />
+            <button type="button" name="registro" class="btn btn-lg btn-primary btn-block" style="position:center" onclick="location.href='@Url.Action("registroAdmin", "Register")'">Agregar Nuevo</button>
+        </section>
+    </div>
+
+    <div >
+        <section class="login-form" style="position:center">
+            <br />
+            <button type="button" name="registro" class="btn btn-lg btn-primary btn-block" style="position:center" onclick="location.href='@Url.Action("ListAdmin", "AdminEmp")'">Eliminar</button>
+        </section>
+    </div>
+</div>
+
+
+

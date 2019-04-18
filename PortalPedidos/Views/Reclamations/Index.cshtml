@@ -1,0 +1,122 @@
+﻿
+@{
+    ViewBag.Title = "Reclamos";
+    var r = ViewBag.reclamos as List<PortalPedidos.Models.ReclamosModel>;
+}
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Inicio de Sesión</title>
+<!-- Bootstrap core CSS -->
+<link href="@Url.Content("~/css/bootstrap.css")" rel="stylesheet">
+<link href="@Url.Content("~/css/dashboard.css")" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<style>
+    #divicono {
+        float: left;
+        width: 10%;
+    }
+
+    #divinfo {
+        float: right;
+        width: 90%;
+    }
+
+    #divlogo {
+        float: right;
+        width: 10%;
+    }
+
+    ul li {
+        margin-right: 15px;
+    }
+</style>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="@Url.Action("Index","Home")">Bienvenido a MedicFarma</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><img src="~/Context/logo.png" class="img-thumbnail" width="45" height="45" /></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="@Url.Action("LogOut",  "Login")">Cerrar Sesión</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="icon-bar" id="divicono">
+        <img src="~/Context/reclamo.png" width="100" height="100" />
+    </div>
+    <div class="main" id="divinfo">
+        <h1 class="page-header">Reclamos de:  @Session["Sucursal"].ToString()</h1>
+        <h4>Empleado: @Session["NombreUsuario"].ToString()</h4>
+    </div>
+</div>
+
+
+
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Incidencia No</th>
+                <th>Pedido No</th>
+                <th>Fecha incidencia</th>
+                <th>Estado</th>
+                <th>Cliente</th>
+                <th>Telefono</th>
+                <th>Incidencia</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (r != null)
+            {
+                foreach (var row in r)
+                {
+
+                    <tr>
+                        <td>@row.idIncidencia</td>
+                        <td>@row.idPedido</td>
+                        <td>@row.FechaIncidencia</td>
+                        <td>
+                            <a href="@Url.Action("Index",  "StatusReclamation" , new { ID_PEDIDO = row.idPedido }, Request.Url.Scheme)">
+                                <span>@row.estado</span>
+                            </a>
+                        </td>
+                        <td>@row.cliente</td>
+                        <td>@row.telefono</td>
+                        <td>@row.incidencia</td>
+                       
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="@Url.Content("~/js/bootstrap.js")"></script>

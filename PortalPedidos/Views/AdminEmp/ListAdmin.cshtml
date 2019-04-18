@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout3.cshtml";
+    ViewBag.Title = "ListAdmin";
+    var emp = ViewBag.emp as List<PortalPedidos.Models.AdminFarmaciaModel>;
+}
+
+<h2>Lista Administradores de farmacias</h2>
+<div class="table-responsive">
+    <table class="table table-striped" style="width:80%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Codigo</th>
+                <th>Farmacia</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Usuario</th>
+                <th>DUI</th>
+                <th>NIT</th>
+                <th>Telefono</th>
+                <th>Direccion</th>
+                <th>...</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (emp != null)
+            {
+                foreach (var row in emp)
+                {
+
+                    <tr>
+                        <td>@row.ID_ADMINISTRADOR</td>
+                        <td>@row.CODIGO_ADMINISTRADOR</td>
+                        <td>@row.FARMACIA</td>
+                        <td>@row.NOMBRES</td>
+                        <td>@row.APELLIDOS</td>
+                        <td>@row.USUARIO</td>
+                        <td>@row.DUI</td>
+                        <td>@row.NIT</td>
+                        <td>@row.TELEFONO</td>
+                        <td>@row.DIRECCION </td>
+                        <td> @Html.ActionLink("ELIMINAR", "Delete", "AdminEmp", new { DUI = row.DUI }, new { onclick = "return confirm('¿Estas seguro eliminar al usuario?');" })</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="@Url.Content("~/js/bootstrap.js")"></script>
+
+

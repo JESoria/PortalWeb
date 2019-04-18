@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MEDICFARMAModelStoreContainer" CdmEntityContainer="MEDICFARMAEntities">
+    <EntitySetMapping Name="ADMINISTRADOR_FARMACIA">
+      <EntityTypeMapping TypeName="MEDICFARMAModel.ADMINISTRADOR_FARMACIA">
+        <MappingFragment StoreEntitySet="ADMINISTRADOR_FARMACIA">
+          <ScalarProperty Name="ID_ADMINISTRADOR" ColumnName="ID_ADMINISTRADOR" />
+          <ScalarProperty Name="CODIGO_ADMINISTRADOR" ColumnName="CODIGO_ADMINISTRADOR" />
+          <ScalarProperty Name="ID_FARMACIA" ColumnName="ID_FARMACIA" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+          <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="DUI" ColumnName="DUI" />
+          <ScalarProperty Name="NIT" ColumnName="NIT" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CREDENCIAL_USUARIO">
+      <EntityTypeMapping TypeName="MEDICFARMAModel.CREDENCIAL_USUARIO">
+        <MappingFragment StoreEntitySet="CREDENCIAL_USUARIO">
+          <ScalarProperty Name="ID_CREDENCIAL_USUARIO" ColumnName="ID_CREDENCIAL_USUARIO" />
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+          <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETALLE_PEDIDO">
+      <EntityTypeMapping TypeName="MEDICFARMAModel.DETALLE_PEDIDO">
+        <MappingFragment StoreEntitySet="DETALLE_PEDIDO">
+          <ScalarProperty Name="ID_DETALLE_PEDIDO" ColumnName="ID_DETALLE_PEDIDO" />
+          <ScalarProperty Name="ID_PEDIDO" ColumnName="ID_PEDIDO" />
+          <ScalarProperty Name="PRODUCTO" ColumnName="PRODUCTO" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="PRECIO_VENTA" ColumnName="PRECIO_VENTA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLEADO">
+      <EntityTypeMapping TypeName="MEDICFARMAModel.EMPLEADO">
+        <MappingFragment StoreEntitySet="EMPLEADO">
+          <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
+          <ScalarProperty Name="CODIGO_EMPLEADO" ColumnName="CODIGO_EMPLEADO" />
+          <ScalarProperty Name="ID_SUCURSAL" ColumnName="ID_SUCURSAL" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+          <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="DUI" ColumnName="DUI" />
+          <ScalarProperty Name="NIT" ColumnName="NIT" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FARMACIA">
+      <EntityTypeMapping TypeName="MEDICFARMAModel.FARMACIA">
+        <MappingFragment StoreEntitySet="FARMACIA">
+          <ScalarProperty Name="ID_FARMACIA" ColumnName="ID_FARMACIA" />
+          <ScalarProperty Name="FARMACIA1" ColumnName="FARMACIA" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INCIDENCIA">
+      <EntityTypeMapping TypeName="MEDICFARMAModel.INCIDENCIA">
+        <MappingFragment StoreEntitySet="INCIDENCIA">
+          <ScalarProperty Name="ID_INCIDENCIA" ColumnName="ID_INCIDENCIA" />
+          <ScalarProperty Name="ID_PEDIDO" ColumnName="ID_PEDIDO" />
+          <ScalarProperty Name="INCIDENCIA1" ColumnName="INCIDENCIA" />
+          <ScalarProperty Name="FECHA_INCIDENCIA" ColumnName="FECHA_INCIDENCIA" />
+          <ScalarProperty Name="FECHA_RESUELTO" ColumnName="FECHA_RESUELTO" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PEDIDO">
+      <EntityTypeMapping TypeName="MEDICFARMAModel.PEDIDO">
+        <MappingFragment StoreEntitySet="PEDIDO">
+          <ScalarProperty Name="ID_PEDIDO" ColumnName="ID_PEDIDO" />
+          <ScalarProperty Name="CODIGO_PEDIDO" ColumnName="CODIGO_PEDIDO" />
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+          <ScalarProperty Name="ID_SUCURSAL" ColumnName="ID_SUCURSAL" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="FECHA_RECIBIDO" ColumnName="FECHA_RECIBIDO" />
+          <ScalarProperty Name="FECHA_ENVIO" ColumnName="FECHA_ENVIO" />
+          <ScalarProperty Name="MONTO_COMPRA" ColumnName="MONTO_COMPRA" />
+          <ScalarProperty Name="ESTADO_PEDIDO" ColumnName="ESTADO_PEDIDO" />
+          <ScalarProperty Name="ESTADO_PAGO" ColumnName="ESTADO_PAGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUCURSAL">
+      <EntityTypeMapping TypeName="MEDICFARMAModel.SUCURSAL">
+        <MappingFragment StoreEntitySet="SUCURSAL">
+          <ScalarProperty Name="ID_SUCURSAL" ColumnName="ID_SUCURSAL" />
+          <ScalarProperty Name="ID_FARMACIA" ColumnName="ID_FARMACIA" />
+          <ScalarProperty Name="SUCURSAL1" ColumnName="SUCURSAL" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="LONGITUD" ColumnName="LONGITUD" />
+          <ScalarProperty Name="LATITUD" ColumnName="LATITUD" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_PAGO">
+      <EntityTypeMapping TypeName="MEDICFARMAModel.TIPO_PAGO">
+        <MappingFragment StoreEntitySet="TIPO_PAGO">
+          <ScalarProperty Name="ID_TIPO_PAGO" ColumnName="ID_TIPO_PAGO" />
+          <ScalarProperty Name="TIPO_PAGO1" ColumnName="TIPO_PAGO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRANSACCION_PAGO">
+      <EntityTypeMapping TypeName="MEDICFARMAModel.TRANSACCION_PAGO">
+        <MappingFragment StoreEntitySet="TRANSACCION_PAGO">
+          <ScalarProperty Name="ID_TRANSACCION_PAGO" ColumnName="ID_TRANSACCION_PAGO" />
+          <ScalarProperty Name="CODIGO_PAGO" ColumnName="CODIGO_PAGO" />
+          <ScalarProperty Name="ID_PEDIDO" ColumnName="ID_PEDIDO" />
+          <ScalarProperty Name="ID_TIPO_PAGO" ColumnName="ID_TIPO_PAGO" />
+          <ScalarProperty Name="FECHA_TRANSACCION" ColumnName="FECHA_TRANSACCION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="MEDICFARMAModel.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+          <ScalarProperty Name="GENERO" ColumnName="GENERO" />
+          <ScalarProperty Name="FECHA_NACIMIENTO" ColumnName="FECHA_NACIMIENTO" />
+          <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+          <ScalarProperty Name="FACEBOOK_ID" ColumnName="FACEBOOK_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO_MASTER_MEDICFARMA">
+      <EntityTypeMapping TypeName="MEDICFARMAModel.USUARIO_MASTER_MEDICFARMA">
+        <MappingFragment StoreEntitySet="USUARIO_MASTER_MEDICFARMA">
+          <ScalarProperty Name="ID_USUARIO_MASTER" ColumnName="ID_USUARIO_MASTER" />
+          <ScalarProperty Name="CODIGO_ADMINISTRADOR" ColumnName="CODIGO_ADMINISTRADOR" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+          <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONSULTAS">
+      <EntityTypeMapping TypeName="MEDICFARMAModel.CONSULTAS">
+        <MappingFragment StoreEntitySet="CONSULTAS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PRODUCTO" ColumnName="PRODUCTO" />
+          <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+          <ScalarProperty Name="ID_SUCURSAL_PRODUCTO" ColumnName="ID_SUCURSAL_PRODUCTO" />
+          <ScalarProperty Name="ID_SUCURSAL" ColumnName="ID_SUCURSAL" />
+          <ScalarProperty Name="SUCURSAL" ColumnName="SUCURSAL" />
+          <ScalarProperty Name="LATITUD" ColumnName="LATITUD" />
+          <ScalarProperty Name="LONGITUD" ColumnName="LONGITUD" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="DISTANCIA" ColumnName="DISTANCIA" />
+          <ScalarProperty Name="ID_FARMACIA" ColumnName="ID_FARMACIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "detalle";
+    var d = ViewBag.x as List<PortalPedidos.Models.OrdersModel>;
+    
+}
+
+<h2>detalle</h2>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Cantidad</th>
+                <th>Producto</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (d != null)
+            {
+
+                foreach (var row in d)
+                {
+                    var det = row.detalle;
+                    foreach (var row2 in det)
+                    {
+                        <tr>
+                            <td>@row2.CANTIDAD</td>
+                            <td>@row2.PRODUCTO</td>
+                            <td>@row2.PRECIO_VENTA</td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+
