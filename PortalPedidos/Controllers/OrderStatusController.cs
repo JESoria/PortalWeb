@@ -45,6 +45,7 @@ namespace PortalPedidos.Controllers
                 var reclamo = db.INCIDENCIA.Where(x => x.ID_PEDIDO == ID_PEDIDO);
                 reclamo.FirstOrDefault().ESTADO = "RESUELTO";
                 reclamo.FirstOrDefault().OBSERVACION = Observaciones;
+                reclamo.FirstOrDefault().FECHA_RESUELTO = DateTime.Now;
                 db.SaveChanges();
             }
                 return RedirectToAction("Index", "Reclamations");

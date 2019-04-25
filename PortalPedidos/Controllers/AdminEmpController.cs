@@ -12,17 +12,32 @@ namespace PortalPedidos.Controllers
         // GET: AdminEmp
         public ActionResult Index()
         {
-            return View();
+            if (Session["NombreUsuario"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         public ActionResult Master()
         {
-            return View();
+            if (Session["NombreUsuario"] != null)
+            {
+                return View();
+            }
+            else {
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         
         public ActionResult ListAdmin ()
         {
+            if (Session["NombreUsuario"] != null)
+            {
                 using (MEDICFARMAEntities db = new MEDICFARMAEntities())
                 {
                     List<AdminFarmaciaModel> datos = new List<AdminFarmaciaModel>();
@@ -49,45 +64,58 @@ namespace PortalPedidos.Controllers
                     });
                     ViewBag.emp = datos;
                 }
-           
+
                 return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
+
+
 
         public ActionResult ListEmp()
         {
-
-            using (MEDICFARMAEntities db = new MEDICFARMAEntities())
+            if (Session["NombreUsuario"] != null)
             {
-                List<EmpleadosModel> datos = new List<EmpleadosModel>();
-                int idFarma = Convert.ToInt32(Session["idFarmacia"].ToString());
-
-                db.EMPLEADO.OrderBy(x => x.ID_EMPLEADO).ToList().ForEach(x =>
+                using (MEDICFARMAEntities db = new MEDICFARMAEntities())
                 {
-                    db.SUCURSAL.Where(y => y.ID_SUCURSAL == x.ID_SUCURSAL).ToList().ForEach(y =>
+                    List<EmpleadosModel> datos = new List<EmpleadosModel>();
+                    int idFarma = Convert.ToInt32(Session["idFarmacia"].ToString());
+
+                    db.EMPLEADO.OrderBy(x => x.ID_EMPLEADO).ToList().ForEach(x =>
                     {
-                        db.FARMACIA.Where(z => z.ID_FARMACIA == idFarma).ToList().ForEach(z =>
+                        db.SUCURSAL.Where(y => y.ID_SUCURSAL == x.ID_SUCURSAL).ToList().ForEach(y =>
                         {
-                            datos.Add(new EmpleadosModel()
+                            db.FARMACIA.Where(z => z.ID_FARMACIA == idFarma).ToList().ForEach(z =>
                             {
-                                ID_EMPLEADO = x.ID_EMPLEADO,
-                                CODIGO_EMPLEADO = x.CODIGO_EMPLEADO,
-                                FARMACIA = z.FARMACIA1,
-                                SUCURSAL = y.SUCURSAL1,
-                                NOMBRES = x.NOMBRES + " " + x.APELLIDOS,
-                                USUARIO = x.USUARIO,
-                                DUI = x.DUI,
-                                NIT = x.NIT,
-                                TELEFONO = x.TELEFONO,
-                                DIRECCION = x.DIRECCION
-                             });
+                                datos.Add(new EmpleadosModel()
+                                {
+                                    ID_EMPLEADO = x.ID_EMPLEADO,
+                                    CODIGO_EMPLEADO = x.CODIGO_EMPLEADO,
+                                    FARMACIA = z.FARMACIA1,
+                                    SUCURSAL = y.SUCURSAL1,
+                                    NOMBRES = x.NOMBRES + " " + x.APELLIDOS,
+                                    USUARIO = x.USUARIO,
+                                    DUI = x.DUI,
+                                    NIT = x.NIT,
+                                    TELEFONO = x.TELEFONO,
+                                    DIRECCION = x.DIRECCION
+                                });
+                            });
                         });
                     });
-                });
-                
-                ViewBag.empleados = datos;
-            }
 
-            return View();
+                    ViewBag.empleados = datos;
+                }
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
 
 

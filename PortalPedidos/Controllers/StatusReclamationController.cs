@@ -11,8 +11,15 @@ namespace PortalPedidos.Controllers
         // GET: StatusReclamation
         public ActionResult Index(int ID_PEDIDO)
         {
-            ViewBag.idP = ID_PEDIDO;
-            return View();
+            if (Session["NombreUsuario"] != null)
+            {
+                ViewBag.idP = ID_PEDIDO;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
         
     }

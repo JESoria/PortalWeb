@@ -12,8 +12,14 @@ namespace PortalPedidos.Controllers
         // GET: Register
         public ActionResult Index()
         {
-
-            return View();
+            if (Session["NombreUsuario"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         
@@ -65,9 +71,16 @@ namespace PortalPedidos.Controllers
 
         public ActionResult registroAdmin()
         {
-
-            return View();
+            if (Session["NombreUsuario"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
+
 
         [HttpPost]
         public ActionResult registroAdmin(RegisterAdminModel model)
