@@ -2,17 +2,18 @@
 @{
     ViewBag.Title = "cambiarEstadoReclamo";
     var id = ViewBag.idP;
+    var idI = ViewBag.idI;
 }
 
 <h2 style="margin-left:20px">Cambiar Estado de Reclamo</h2>
 <br />
-<h4 style="margin-left:20px">Reclamo N0. @id</h4>
+<h4 style="margin-left:20px">Reclamo N0. @idI</h4>
 
 
 
 <div class="row" style=" width:50%; height:50%;  margin-left:20px ">
     <section class="form-group">
-        @using (Html.BeginForm("Reclamo", "OrderStatus", new { ID_PEDIDO = @id }, FormMethod.Post,
+        @using (Html.BeginForm("Reclamo", "OrderStatus", new { ID_PEDIDO = @id, ID_INCIDENCIA = @idI}, FormMethod.Post,
 new { enctype = "multipart/form-data", @role = "status" }))
         {
             @Html.TextBox("Observaciones", null, new { id = "Observaciones", autocomplete = "off", @placeholder = "Observaciones", @class = "form-control input-lg" })

@@ -503,6 +503,7 @@
     <Content Include="Views\StatusReclamation\Index.cshtml" />
     <Content Include="Views\calendario.cshtml" />
     <Content Include="Views\Home\Buscar.cshtml" />
+    <Content Include="Views\Reclamations\Busqueda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

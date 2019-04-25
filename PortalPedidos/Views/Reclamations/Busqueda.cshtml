@@ -1,7 +1,6 @@
 ﻿
 @{
-    Layout = null;
-    ViewBag.Title = "Reclamos";
+    ViewBag.Title = "Busqueda";
     var r = ViewBag.reclamos as List<PortalPedidos.Models.ReclamosModel>;
 }
 <!DOCTYPE html>
@@ -17,45 +16,15 @@
     <link href="@Url.Content("~/css/bootstrap.css")" rel="stylesheet">
     <link href="@Url.Content("~/css/dashboard.css")" rel="stylesheet">
 
-    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
-    <script type="text/javascript">
-        $(function () {
-           $('#fecha').daterangepicker({
-                startDate: moment("20190101", "YYYYMMDD"),
-                endDate: moment("@Html.Raw(System.DateTime.Now.Year+""+ System.DateTime.Now.Month.ToString("00")+""+ System.DateTime.Now.Day.ToString("00"))", "YYYYMMDD"),
-                maxDate: moment().endOf('month'),
-                'applyClass': 'btn-sm btn-success',
-                'cancelClass': 'btn-sm btn-default',
-               locale: {
-                   format: 'DD/MM/YYYY',
-                    applyLabel: 'Apply',
-                    cancelLabel: 'Cancel',
-                },
-                ranges: {
-                    'Today': [moment(), moment()],
-                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                    'This Month': [moment().startOf('month'), moment().endOf('month')],
-                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                }
-            }).prev().on(ace.click_event, function () {
-                    $(this).next().focus();
-                });
 
-        });
-    </script>
 
     <style>
         #divicono {
@@ -113,22 +82,7 @@
     </div>
 
 
-    <h4 style="margin-left:20px;">Buscar por fecha: </h4>
-    @using (Html.BeginForm("Busqueda", "Reclamations"))
-    {
-        @Html.AntiForgeryToken()
 
-        <div class="row" style=" width:50%; height:50%;  margin-left:20px;">
-            <div style="float:left; width:48%;margin:0;">
-                <input type="text" id="fecha" name="fecha" class="form-control" autocomplete="off">
-            </div>
-            <div style="float:right; width:50%; margin:0;">
-                <button type="submit" name="buscar" value="buscarbtn" class="btn btn-primary btn-sm">BUSCAR</button>
-            </div>
-        </div>
-
-    }
-    <br />
 
     <div class="table-responsive">
         <table class="table table-striped">
@@ -176,5 +130,4 @@
     <script src="@Url.Content("~/js/bootstrap.js")"></script>
 </body>
 </html>
-
 

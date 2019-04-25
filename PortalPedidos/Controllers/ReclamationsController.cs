@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -39,8 +40,16 @@ namespace PortalPedidos.Controllers
                         });
                     });
                     ViewBag.reclamos = reclamos;
+                    if (ViewBag.reclamos != null)
+                    {
+                        return View();
+                    }
+                    else
+                    {
+                        TempData["alertMessage"] = "NO HAY RECLAMOS PARA MOSTRAR";
+                        return View();
+                    }
                 }
-                return View();
             }
             else {
                 return RedirectToAction("Index", "Login");
@@ -52,5 +61,55 @@ namespace PortalPedidos.Controllers
             ViewBag.id = ID_PEDIDO;
             return View();
         }
+
+
+        public ActionResult Busqueda (string fecha)
+        {
+            ViewBag.Title = "Busqueda";
+
+            if (Session["NombreUsuario"] != null)
+            {
+                using (MEDICFARMAEntities db = new MEDICFARMAEntities())
+                {
+                    var fechas = fecha.Split('-');
+                    var fecha_ini = Convert.ToDateTime(fechas[0]);
+                    var fecha_fin = Convert.ToDateTime(fechas[1]);
+                    List<ReclamosModel> reclamos  = new List<ReclamosModel>();
+                    int id = Convert.ToInt32(Session["idSucursal"].ToString());
+
+                    db.INCIDENCIA.OrderBy(x => x.ID_INCIDENCIA).Where(x => x.PEDIDO.ID_SUCURSAL == id && DbFunctions.TruncateTime(x.FECHA_INCIDENCIA) >= DbFunctions.TruncateTime(fecha_ini) && DbFunctions.TruncateTime(x.FECHA_INCIDENCIA) <= DbFunctions.TruncateTime(fecha_fin)).ToList().ForEach(x =>
+                    {
+                        reclamos.Add(new ReclamosModel()
+                        {
+                            idIncidencia = x.ID_INCIDENCIA,
+                            idPedido = x.PEDIDO.ID_PEDIDO,
+                            FechaIncidencia = x.FECHA_INCIDENCIA,
+                            estado = x.ESTADO,
+                            cliente = x.PEDIDO.USUARIO.NOMBRES + " " + x.PEDIDO.USUARIO.APELLIDOS,
+                            telefono = x.PEDIDO.TELEFONO,
+                            incidencia = x.INCIDENCIA1
+                        });
+
+
+                    });
+
+                    ViewBag.reclamos = reclamos;
+                    if (ViewBag.reclamos != null)
+                    {
+                        return View();
+                    }
+                    else
+                    {
+                        TempData["alertMessage"] = "NO HAY RECLAMOS PARA MOSTRAR";
+                        return View();
+                    }
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+        }
+
     }
 }

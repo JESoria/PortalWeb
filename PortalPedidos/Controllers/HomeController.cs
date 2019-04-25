@@ -1,6 +1,7 @@
 ﻿using PortalPedidos.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -71,21 +72,21 @@ namespace PortalPedidos.Controllers
             {
                 using (MEDICFARMAEntities db = new MEDICFARMAEntities())
                 {
-                    DateTime date = Convert.ToDateTime(fecha);
+                    var fechas = fecha.Split('-');
+                    var fecha_ini = Convert.ToDateTime(fechas[0]);
+                    var fecha_fin = Convert.ToDateTime(fechas[1]);
                     List<OrdersModel> pedido = new List<OrdersModel>();
                     int id = Convert.ToInt32(Session["idSucursal"].ToString());
 
-                    db.PEDIDO.OrderBy(x => x.ID_PEDIDO).Where(x => x.ID_SUCURSAL == id && x.FECHA_ENVIO == date).ToList().ForEach(x =>
+                    db.PEDIDO.OrderBy(x => x.ID_PEDIDO).Where(x => x.ID_SUCURSAL == id && DbFunctions.TruncateTime(x.FECHA_RECIBIDO) >= DbFunctions.TruncateTime(fecha_ini) && DbFunctions.TruncateTime(x.FECHA_RECIBIDO) <= DbFunctions.TruncateTime(fecha_fin)).ToList().ForEach(x =>
                     {
-                        db.USUARIO.Where(u => u.ID_USUARIO == x.ID_USUARIO).ToList().ForEach(u =>
-                        {
                             pedido.Add(new OrdersModel()
                             {
                                 idPedido = x.ID_PEDIDO,
                                 codigo_pedido = x.CODIGO_PEDIDO,
                                 FechaRecibido = x.FECHA_RECIBIDO,
                                 FechaEnvio = Convert.ToDateTime(x.FECHA_ENVIO),
-                                Usuario = u.NOMBRES + " " + u.APELLIDOS,
+                                Usuario = x.USUARIO.NOMBRES + " " + x.USUARIO.APELLIDOS,
                                 Direccion = x.DIRECCION,
                                 Telefono = x.TELEFONO,
                                 TotalCompra = Convert.ToDouble(x.MONTO_COMPRA),
@@ -94,10 +95,10 @@ namespace PortalPedidos.Controllers
                                 detalle = db.DETALLE_PEDIDO.Where(d => d.ID_PEDIDO == x.ID_PEDIDO).ToList()
                             });
 
-                            ViewBag.d = pedido;
+                            
                         });
-                    });
 
+                    ViewBag.d = pedido;
                     if (ViewBag.d != null)
                     {
                         return View();

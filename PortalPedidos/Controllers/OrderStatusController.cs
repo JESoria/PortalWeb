@@ -40,9 +40,9 @@ namespace PortalPedidos.Controllers
 
         }
 
-        public ActionResult Reclamo(int ID_PEDIDO, string Observaciones) {
+        public ActionResult Reclamo(int ID_PEDIDO, int ID_INCIDENCIA, string Observaciones) {
             using (MEDICFARMAEntities db = new MEDICFARMAEntities()) {
-                var reclamo = db.INCIDENCIA.Where(x => x.ID_PEDIDO == ID_PEDIDO);
+                var reclamo = db.INCIDENCIA.Where(x => x.ID_PEDIDO == ID_PEDIDO && x.ID_INCIDENCIA == ID_INCIDENCIA);
                 reclamo.FirstOrDefault().ESTADO = "RESUELTO";
                 reclamo.FirstOrDefault().OBSERVACION = Observaciones;
                 reclamo.FirstOrDefault().FECHA_RESUELTO = DateTime.Now;
